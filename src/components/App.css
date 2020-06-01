@@ -1,0 +1,82 @@
+.app {
+    background-color: #ead5aa;
+    min-height: 100vh;
+}
+.logo {
+    transition: all 0.2s ease-in-out;
+}
+.logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0px 0px 5px #d6b947);
+}
+header {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    width: 100%;
+    padding: 0.25rem 0;
+    background: url("https://d2q63o9r0h0ohi.cloudfront.net/images/card-gallery/bg_filter_middle_tile-907853600f2b8dc11ae3acca94ff309f58b4959f380a6995e1b69b2d94f4bae5811b3ec588d56290599d59ddf6d00f0ce3fa9087c08ee8f7eabe843ed3646f9d.jpg") ;
+}
+header::before {
+    content: "";
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background: repeat url("https://d2q63o9r0h0ohi.cloudfront.net/images/card-gallery/bg_filter_top_tile-2fc1e6f76b820b6c4134c00256a3c6210296b44f0e704fc3df57489c18a1ce91bb35b7ecd693c8d4b5c497c751f32e530105028ba52a88a7f13f8879ec342294.png");
+}
+header::after {
+    content: "";
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 4.5rem;
+    background: repeat url("https://d2q63o9r0h0ohi.cloudfront.net/images/card-gallery/bg_filter_bottom_tile-fe6e278438831fdcb9e897c1d90882eadf1c9c9edb05f9e729b8678c3da8ce386e4a5a03200d943c64837e7d113a8345b8424d05b7906570dde191e3eab8b4dd.png");
+}
+.header-content {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filter input{
+    margin: 0 1rem 0 0;
+    border: 2px solid rgba(199, 204, 134, 0.74);
+    background-color: #6a1717;
+    border-radius: 90px;
+    padding: 0.20rem 0.5rem;
+    color: #fff;
+}
+
+.filter input:focus{
+    border: none;
+    border: 2px solid #fff;
+}
+.filter select {
+    background-color: rgba(195, 177, 137, 0.72);
+    border: 2px solid rgba(199, 204, 134, 0.74);
+    border-radius: 90px;
+    margin: 0 0.5rem;
+    padding: 0.20rem 0.5rem;
+    color: rgba(54, 28, 13, 0.71);
+    appearance: none;
+}
+.filter select:focus {
+    border: 2px solid #fff;
+}
+.container {
+    padding: 10rem 0;
+}
+.grow {
+    transition: all .2s ease-in-out;
+    filter: drop-shadow(0px 10px 10px #000000);}
+.grow:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0px 0px 15px #fff);
+}
+
+
+
