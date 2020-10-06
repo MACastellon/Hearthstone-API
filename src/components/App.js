@@ -44,10 +44,10 @@ const App = () => {
         if (node) observer.current.observe(node)
     },[hasMore])
 
-    useEffect(() => {
+   useEffect(() => {
         setPageNumber(1)
         setCards([]);
-        axios.get("https://us.api.blizzard.com//hearthstone/cards?locale=en_US&page=&textFilter="+ search +"&set=&rarity="+rarity+"&minionType="+minionType+"&type="+type+"&class="+selectedClass+"&access_token=USjapNnpKxa5uDqfO3dEBRMGrIRK7ZCx8T")
+        axios.get("https://us.api.blizzard.com//hearthstone/cards?locale=en_US&page=&textFilter="+ search +"&set=&rarity="+rarity+"&minionType="+minionType+"&type="+type+"&class="+selectedClass+"&access_token=US2TeRO3FQrhIBV2rehkgD9QfCaIeXBLix")
             .then((res) => {
                 const resArr = flatten(res.data.cards);
                 setCards(resArr);
@@ -57,7 +57,7 @@ const App = () => {
 
 
     useEffect(() =>  {
-        axios.get("https://us.api.blizzard.com//hearthstone/cards?locale=en_US&page="+pageNumber+"&textFilter="+ search +"&set=&rarity="+rarity+"&minionType="+minionType+"&type="+type+"&class="+selectedClass+"&access_token=USjapNnpKxa5uDqfO3dEBRMGrIRK7ZCx8T")
+        axios.get("https://us.api.blizzard.com//hearthstone/cards?locale=en_US&page="+pageNumber+"&textFilter="+ search +"&set=&rarity="+rarity+"&minionType="+minionType+"&type="+type+"&class="+selectedClass+"&access_token=US2TeRO3FQrhIBV2rehkgD9QfCaIeXBLix")
             .then((res) => {
                if (res.data.pageCount ===  res.data.page) return
                 const resArr = res.data.cards;
@@ -67,7 +67,6 @@ const App = () => {
                 setHasMore(res.data.pageCount >  res.data.page)
             })
     },[pageNumber])
-
 
     return (
         <div className={"app"}>
