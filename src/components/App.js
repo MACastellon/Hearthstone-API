@@ -61,7 +61,7 @@ const App = () => {
                 setCards(resArr);
             })
         setLoading(false)
-    },[search,selectedClass,rarity,minionType,type,acces_token])
+    },[search,selectedClass,rarity,minionType,type])
 
 
     useEffect(() =>  {
@@ -74,7 +74,7 @@ const App = () => {
                 });
                 setHasMore(res.data.pageCount >  res.data.page)
             })
-    },[pageNumber])
+    },[pageNumber,acces_token])
 
     return (
         <div className={"app"}>
