@@ -14,7 +14,7 @@ const App = () => {
     const [pageNumber , setPageNumber] = useState(1)
     const [hasMore, setHasMore] = useState(false);
     const [loading, setLoading] = useState(true)
-
+    const [acces_token, setAccess_token] = useState("")
     const observer = useRef();
 
 
@@ -43,21 +43,29 @@ const App = () => {
         })
         if (node) observer.current.observe(node)
     },[hasMore])
+    useEffect(() => {
+        if (!loading) return
+        axios.post("https://us.battle.net/oauth/token?client_id=f32f2ebadc6b4607bfab17689bf61e13&client_secret=cLkwbBMFizEK9ay6sdVI9AuMIJJsn1x4&grant_type=client_credentials")
+            .then((res) => {
+                setAccess_token(res.data.access_token);
+                console.log(res.data.access_token);
+            })
+    },[])
 
-   useEffect(() => {
+    useEffect(() => {
         setPageNumber(1)
         setCards([]);
-        axios.get("https://us.api.blizzard.com//hearthstone/cards?locale=en_US&page=&textFilter="+ search +"&set=&rarity="+rarity+"&minionType="+minionType+"&type="+type+"&class="+selectedClass+"&access_token=US2TeRO3FQrhIBV2rehkgD9QfCaIeXBLix")
+        axios.get("https://us.api.blizzard.com//hearthstone/cards?locale=en_US&page=&textFilter="+ search +"&set=&rarity="+rarity+"&minionType="+minionType+"&type="+type+"&class="+selectedClass+"&access_token=" + acces_token)
             .then((res) => {
                 const resArr = flatten(res.data.cards);
                 setCards(resArr);
             })
         setLoading(false)
-    },[search,selectedClass,rarity,minionType,type])
+    },[search,selectedClass,rarity,minionType,type,acces_token])
 
 
     useEffect(() =>  {
-        axios.get("https://us.api.blizzard.com//hearthstone/cards?locale=en_US&page="+pageNumber+"&textFilter="+ search +"&set=&rarity="+rarity+"&minionType="+minionType+"&type="+type+"&class="+selectedClass+"&access_token=US2TeRO3FQrhIBV2rehkgD9QfCaIeXBLix")
+        axios.get("https://us.api.blizzard.com//hearthstone/cards?locale=en_US&page="+pageNumber+"&textFilter="+ search +"&set=&rarity="+rarity+"&minionType="+minionType+"&type="+type+"&class="+selectedClass+"&access_token=" + acces_token)
             .then((res) => {
                if (res.data.pageCount ===  res.data.page) return
                 const resArr = res.data.cards;
